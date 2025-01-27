@@ -1,0 +1,14 @@
+app:
+  name: "Customer Satisfaction Analysis"
+  version: "1.0.0"
+  port: 8000
+
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  logfile: "logs/app.log"
+
+
+model:
+  word2vec_path : "app/models/lemodels"
+  sentiment_model_path: "app/models/lemodeslsentimeent"
