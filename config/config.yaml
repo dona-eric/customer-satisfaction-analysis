@@ -10,5 +10,4 @@ logging:
 
 
 model:
-  word2vec_path : "app/models/lemodels"
-  sentiment_model_path: "app/models/lemodeslsentimeent"
+  model_path: "../models/model.pkl"
