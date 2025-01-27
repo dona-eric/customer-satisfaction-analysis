@@ -1,0 +1,43 @@
+name: Code Quality Check
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  code-quality:
+    runs-on: ubuntu-latest
+
+    steps:
+    # Vérifie le code source
+    - name: Checkout customer-satisfaction-client
+      uses: actions/checkout@v3
+
+    # Configure Python (vous pouvez ajuster la version)
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.12'
+
+    # Installe les dépendances
+    - name: Install dependencies
+      run: |
+        python -m venv env
+        source env/bin/activate
+        pip install -r requirements.txt
+
+    # Exécute les tests
+    - name: Run tests
+      run: |
+        source env/bin/activate
+        pytest --maxfail=5 --disable-warnings
+
+    # Vérifie le linting
+    - name: Run linting
+      run: |
+        source env/bin/activate
+        pylint app_customer/ --fail-under=8
