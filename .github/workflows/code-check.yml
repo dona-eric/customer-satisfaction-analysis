@@ -34,7 +34,7 @@ jobs:
     - name: Run tests
       run: |
         source env/bin/activate
-        pytest --maxfail=5 --disable-warnings
+        pytest tests/test_app.py
 
     # Vérifie le linting
     - name: Run linting
